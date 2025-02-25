@@ -1,0 +1,6 @@
+@VShop.CartApi_HostAddress = http://localhost:5291
+
+GET {{VShop.CartApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

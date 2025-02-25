@@ -1,0 +1,6 @@
+@VShop.DiscountApi_HostAddress = http://localhost:5042
+
+GET {{VShop.DiscountApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
