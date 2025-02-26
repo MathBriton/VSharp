@@ -1,41 +1,75 @@
+using Duende.IdentityServer.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using VShop.IdentityServer.Configuration;
+using VShop.IdentityServer.Data;
+using VShop.IdentityServer.SeedDatabase;
+using VShop.IdentityServer.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddControllersWithViews();
+
+var mySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+                  options.UseMySql(mySqlConnection,
+                    ServerVersion.AutoDetect(mySqlConnection)));
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+
+     //configura��es dos servi�os do IdentityServer
+    var builderIdentityServer = builder.Services.AddIdentityServer(options =>
+    {
+        options.Events.RaiseErrorEvents = true;
+        options.Events.RaiseInformationEvents = true;
+        options.Events.RaiseFailureEvents = true;
+        options.Events.RaiseSuccessEvents = true;
+        options.EmitStaticAudienceClaim = true;
+    }).AddInMemoryIdentityResources(
+                           IdentityConfiguration.IdentityResources)
+                           .AddInMemoryApiScopes(IdentityConfiguration.ApiScopes)
+                           .AddInMemoryClients(IdentityConfiguration.Clients)
+                           .AddAspNetIdentity<ApplicationUser>();
+
+    builderIdentityServer.AddDeveloperSigningCredential();
+
+builder.Services.AddScoped<IDatabaseSeedInitializer, DatabaseIdentityServerInitializer>();
+builder.Services.AddScoped<IProfileService, ProfileAppService>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseExceptionHandler("/Home/Error");
 }
-
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseRouting();
+app.UseIdentityServer();
+app.UseAuthorization();
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+SeedDatabaseIdentityServer(app);
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+void SeedDatabaseIdentityServer(IApplicationBuilder app)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    using (var serviceScope = app.ApplicationServices.CreateScope())
+    {
+        var initRolesUsers = serviceScope.ServiceProvider
+                               .GetService<IDatabaseSeedInitializer>();
+
+        initRolesUsers.InitializeSeedRoles();
+        initRolesUsers.InitializeSeedUsers();
+    }
 }
