@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VShop.CartApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8eb468fa8a365f6a5b8e9d7d77b639202c549c97")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed9859a40df680077ba8996b7fdc75e6a5dfdf00")]
 [assembly: System.Reflection.AssemblyProductAttribute("VShop.CartApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VShop.CartApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
