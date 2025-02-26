@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VShop.IdentityServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d911caa7299edca3672bdb290edcf6557c8a5f22")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1958db8144a1c71138aaed0491cce7a8d6df72a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("VShop.IdentityServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VShop.IdentityServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
