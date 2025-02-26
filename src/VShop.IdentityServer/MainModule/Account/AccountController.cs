@@ -2,7 +2,7 @@
 // See LICENSE in the project root for license information.
 
 
-using IdentityModel;
+using System.IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +19,7 @@ using Duende.IdentityServer.Stores;
 using Duende.IdentityServer.Test;
 using Microsoft.AspNetCore.Identity;
 using VShop.IdentityServer.Data;
+using Duende.IdentityModel;
 
 namespace IdentityServerHost.Quickstart.UI
 {

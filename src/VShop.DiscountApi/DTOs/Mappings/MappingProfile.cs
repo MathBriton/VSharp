@@ -7,6 +7,6 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<CuponDTO, coupon>().ReverseMap();
+        CreateMap<CouponDTO, Coupon>().ReverseMap();
     }
 }

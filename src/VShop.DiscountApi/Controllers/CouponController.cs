@@ -21,7 +21,7 @@ public class CouponController : ControllerBase
     public async Task<ActionResult<CouponDTO>>
     GetDiscountCouponByCode(string couponCode)
     {
-        var coupon = await _repository.GetCouponByCode(couponmCode);
+        var coupon = await _repository.GetCouponByCode(couponCode);
 
         if (coupon is null)
         {

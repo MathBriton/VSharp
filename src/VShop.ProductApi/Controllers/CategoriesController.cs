@@ -57,14 +57,14 @@ public class CategoriesController : ControllerBase
 
         await _categoryService.AddCategory(categoryDto);
 
-        return new CreatedAtRouteResult("GetCategory", new { id = categoryDto.CategoryId },
+        return new CreatedAtRouteResult("GetCategory", new { id = categoryDto.Category },
             categoryDto);
     }
 
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Put(int id, [FromBody] CategoryDTO categoryDto)
     {
-        if (id != categoryDto.CategoryId)
+        if (id != categoryDto.Category)
             return BadRequest();
 
         if (categoryDto == null)

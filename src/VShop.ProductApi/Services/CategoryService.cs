@@ -9,8 +9,7 @@ public class CategoryService : ICategoryService
 {
     private ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
-    public CategoryService (ICategoryRepository 
-    categoryRepository, IMapper mapper)
+    public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
     {
         _categoryRepository = categoryRepository;
         _mapper = mapper;
@@ -19,16 +18,15 @@ public class CategoryService : ICategoryService
     public async Task<IEnumerable<CategoryDTO>> GetCategories()
     {
         var categoriesEntity = await _categoryRepository.GetAll();
-        return _mapper.Map<IEnumerable<CategoryDTO>>
-        (categoriesEntity);
+        return _mapper.Map<IEnumerable<CategoryDTO>>(categoriesEntity);
     }
 
-    public async Task<IEnumerable<CategoryDTO>>
-    GetCategoriesProducts()
+    public async Task<IEnumerable<CategoryDTO>> GetCategoriesProducts()
     {
         var categoriesEntity = await _categoryRepository.GetCategoriesProducts();
         return _mapper.Map<IEnumerable<CategoryDTO>>(categoriesEntity);
     }
+
 
     public async Task<CategoryDTO> GetCategoryById(int id)
     {
@@ -38,16 +36,14 @@ public class CategoryService : ICategoryService
 
     public async Task AddCategory(CategoryDTO categoryDto)
     {
-        var categoryEntity = _mapper.Map<Category>
-        (categoryDto);
-        await _CategoryRepository.Create(categoryEntity);
-        categoryDto.CategoryId = categoryEntiy.CategoryId;
+        var categoryEntity = _mapper.Map<Category>(categoryDto);
+        await _categoryRepository.Create(categoryEntity);
+        categoryDto.Category = categoryEntity.CategoryId;
     }
 
     public async Task UpdateCategory(CategoryDTO categoryDto)
     {
-        var categoryEntity = _mapper.Map<Category>
-        (categoryDto);
+        var categoryEntity = _mapper.Map<Category>(categoryDto);
         await _categoryRepository.Update(categoryEntity);
     }
 

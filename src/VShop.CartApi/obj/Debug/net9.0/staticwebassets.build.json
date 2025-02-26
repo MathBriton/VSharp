@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "8Fi6/qvWsvANSWl/0mkoBxrSBqjISIRuip8CcIIEPdo=",
+  "Source": "VShop.CartApi",
+  "BasePath": "_content/VShop.CartApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -57,7 +57,7 @@ builder.Services.AddHttpClient<IProductService, ProductService>("ProductApi", c 
     c.DefaultRequestHeaders.Add("User-Agent", "HttpClientFactory-ProductApi");
 });
 
-builder.Services.AddHttpClient<ICartService, CartService>("CartApi", 
+builder.Services.AddHttpClient<ICartService, CartService>("CartApi",
     c => c.BaseAddress = new Uri(builder.Configuration["ServiceUri:CartApi"])
 );
 
@@ -86,7 +86,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(a
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

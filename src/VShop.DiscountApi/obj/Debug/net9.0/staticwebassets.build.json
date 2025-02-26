@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "G/NePB3XkdkzZKsJ15GiTRMzXkXlhv1dkyXmong9x2Q=",
+  "Source": "VShop.DiscountApi",
+  "BasePath": "_content/VShop.DiscountApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

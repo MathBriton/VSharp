@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VShop.DiscountApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51fbc00c86ed2eb6cdb4901bfb2b7ae4720da52a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7b5ad5538fcc1248ecea2d41244e99d2588cd56")]
 [assembly: System.Reflection.AssemblyProductAttribute("VShop.DiscountApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VShop.DiscountApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

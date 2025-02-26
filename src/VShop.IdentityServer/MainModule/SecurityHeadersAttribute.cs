@@ -54,4 +54,3 @@ namespace IdentityServerHost.Quickstart.UI
         }
     }
 }
-s
